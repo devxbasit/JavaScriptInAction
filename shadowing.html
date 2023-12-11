@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        var fruit = 'orange'
+
+        for (var i = 0; i < 10; i++) {
+            var fruit = 'mango';
+        }
+
+        function test() {
+
+            // new execution context will be created
+            var fruit = "apple"
+            console.log(fruit);
+
+        }
+
+        console.log(fruit);
+        test();
+        console.log(fruit);
+
+
+        let x = 10;
+
+        for (var i = 0; i < 10; i++) {
+            let x = 20;
+        }
+
+        console.log(x);
+
+
+    </script>
+
+</body>
+
+</html>

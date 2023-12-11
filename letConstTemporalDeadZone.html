@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // let and const declarations are hoisted, but are in the temporal dead zone, until the are initialized with some value
+
+
+        // will throw error Uncaught ReferenceError: can't access lexical declaration 'x' before initialization
+        //console.log(x);
+
+        console.log(y);
+
+        // cannot access let & const declaration until they are assigned with some value
+
+        //by default undefined is assigned below
+        let x;
+        var y;
+
+        console.log(x);
+
+
+        const z = 10;
+
+
+        // Uncaught TypeError: invalid assignment to const 'z'
+        z = 99;
+
+
+
+
+    </script>
+
+</body>
+
+</html>
