@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+
+<script>
+    // Primitive values are passed by value in javascript
+    function callByValue(x) {
+
+        x = 20;
+
+    }
+
+    var x = 10;
+    callByValue(x);
+    console.log(x);
+
+
+
+
+    // all objects(including functions) are passed by reference in javascript
+    function callByReference(obj) {
+
+        obj.message = 'John';
+
+    }
+    var obj = { message: "Hello" };
+    let obj2 = obj;
+    obj2.message = 'bye';
+
+    console.log(obj.message);
+    callByReference(obj);
+    console.log(obj.message);
+
+
+
+</script>
+
+</html>

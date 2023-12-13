@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        // var declarations are function scoped, they get attached to window object
+        var b = 20;
+
+        function x() {
+            var a = 200;
+
+            var b = 300;
+
+        }
+
+        x();
+        console.log(b);
+        console.log(a);
+
+    </script>
+</body>
+
+</html>

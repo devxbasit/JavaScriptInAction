@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        function x() {
+
+            for (let i = 1; i < 5; i++) {
+                setTimeout(function () {
+                    console.log(`Hello - ${i}`);
+                }, i * 1000);
+            }
+        }
+
+        x();
+
+
+        function y() {
+
+            for (var i = 1; i < 5; i++) {
+
+                var fn = function (i) {
+                    // make a new copy of variable i every time
+                    setTimeout(function () {
+                        console.log(`Hello - ${i}`);
+                    }, i * 1000);
+                }
+
+                fn(i);
+            }
+        }
+
+        y();
+
+    </script>
+
+</body>
+
+</html>
