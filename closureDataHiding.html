@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">Click Me</button>
+
+
+
+    <script>
+
+
+        function Counter() {
+
+            var counter = 0;
+
+            this.increment = function () {
+                counter++;
+                console.log(counter);
+            }
+
+            this.decrement = function () {
+                counter--;
+                console.log(counter);
+            }
+        }
+
+        // only two function can access the counter variable and no one else can
+
+        let counter = new Counter();
+
+        console.log(counter);
+
+        counter.increment();
+        counter.increment();
+        counter.increment();
+
+        console.log('----------------------------------------------------');
+
+        let counter2 = new Counter();
+        counter2.increment();
+
+
+        // ----------------------------------------------------------------
+
+
+        document.getElementById('btn')
+            .addEventListener('click', getHandler());
+
+        function getHandler() {
+
+            // counter cannot be accessed from outside
+            var counter = 0;
+
+            function clickMe() {
+                counter++;
+                console.log(counter);
+            }
+
+            return clickMe;
+        }
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

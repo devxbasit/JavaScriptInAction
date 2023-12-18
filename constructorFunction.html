@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        function Person(name, age, x) {
+
+            var x = x; // private
+
+            this.name = "name"; // public
+            this.age = "age";
+
+            this.sayHello = function () {
+                console.log(`Hello ${x}`);
+            }
+        }
+
+        var person1 = new Person("A", 10, "private value");
+        var person2 = new Person("B", 10, "private value");
+
+
+        person1.x = "x";
+        console.log(person1.x)
+        person1.sayHello();
+
+
+        person1.salary = 20000;
+        console.log(person1.salary);
+        console.log(person2.salary);
+
+
+        Person.prototype.country = 'United States';
+        console.log(person1.country);
+        console.log(person2.country);
+
+
+    </script>
+
+</body>
+
+</html>

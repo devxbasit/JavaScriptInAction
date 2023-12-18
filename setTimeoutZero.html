@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        console.log('some code 1');
+
+        setTimeout(doSomething, 0);
+
+        console.log('some code 2');
+
+        function doSomething() {
+
+            // run it once after the call stack is free, we can use setTimeout with time 0.
+            console.log('defer some task, that is less important')
+        }
+    </script>
+
+</body>
+
+</html>

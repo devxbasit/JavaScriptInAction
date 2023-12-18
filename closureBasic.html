@@ -24,8 +24,8 @@
             return n;
         }
 
-        var o = m();
-        o();
+        // function n forms a closure with a variable
+        m()();
 
 
         function x() {
@@ -44,8 +44,8 @@
             return y();
         }
 
-        var p = x();
-        p();
+        // function z forms a closure with j & k variable
+        x()();
 
 
     </script>

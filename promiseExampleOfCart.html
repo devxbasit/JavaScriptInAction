@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // consumer par
+        const cart = ['shoe', 'laptop', 'mobile']
+
+        const promise = createOrder(cart);
+
+        promise
+            .then(function (response) {
+
+                console.log(`order created, orderId = ${response.data.orderId}`);
+                return response.data.orderId;
+            })
+            .then(function (orderId) {
+
+                const promise = proceedToPayment(orderId);
+                // the next .then callback function will get attached to the above promise
+                return promise;
+
+            })
+            .then(function (paymentInfo) {
+
+                if (paymentInfo.paymentStatus) {
+                    console.log('payment successful');
+                }
+
+            })
+            .catch(function (err) {
+                // this catch handler will handler all above promise failures
+                console.log(err);
+            })
+            .then(function () {
+                console.log("finally Block 1")
+            })
+            .then(function () {
+                console.log("finally Block 2")
+            })
+
+        // producer part
+        function createOrder(cart) {
+
+            const promise = new Promise(function (resolve, reject) {
+
+                // write all logic of create order here
+                // this function is called as executor function which take resolve and reject
+
+                if (!isCartValid(cart)) {
+
+                    reject({ message: 'Cart is not valid', isSuccess: false, data: null, error: new Error("Cart in not valid") });
+                }
+
+                const orderId = dbCallToAddOrder(cart);
+
+                if (orderId > 0) {
+
+                    setTimeout(() => {
+
+                        resolve({ isSuccess: true, data: { orderId: orderId }, error: null });
+
+                    }, 2000);
+                }
+
+            });
+
+            // return the promise, promise will be in pending state
+            return promise;
+
+        }
+
+
+        function dbCallToAddOrder(cart) {
+
+            // call to DB and return orderId
+
+            return 400098762
+
+        }
+
+        function isCartValid(cart) {
+            return false;
+        }
+
+        function isPaymentGatewayActive() {
+            return false;
+        }
+
+
+        function proceedToPayment(orderId) {
+
+            return new Promise(function (resolve, reject) {
+
+                console.log(`proceeding to payment for order id ${orderId}`)
+                setTimeout(() => {
+
+                    return isPaymentGatewayActive() ?
+                        resolve({ paymentStatus: true, amount: 5000 })
+                        : reject("Payment failed, payment Gateway is not active")
+
+                }, 2000);
+
+            })
+        };
+
+    </script>
+
+</body>
+
+</html>
