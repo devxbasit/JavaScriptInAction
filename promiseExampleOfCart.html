@@ -10,7 +10,7 @@
 <body>
 
     <script>
-        // consumer par
+        // consumer of promise part
         const cart = ['shoe', 'laptop', 'mobile']
 
         const promise = createOrder(cart);
@@ -31,7 +31,7 @@
             .then(function (paymentInfo) {
 
                 if (paymentInfo.paymentStatus) {
-                    console.log('payment successful');
+                    console.log('****************payment successful');
                 }
 
             })
@@ -46,7 +46,9 @@
                 console.log("finally Block 2")
             })
 
-        // producer part
+
+
+        // producer of promise part
         function createOrder(cart) {
 
             const promise = new Promise(function (resolve, reject) {
@@ -78,6 +80,32 @@
         }
 
 
+        function proceedToPayment(orderId) {
+
+            return new Promise(function (resolve, reject) {
+
+                console.log(`proceeding to payment for order id ${orderId}`)
+                setTimeout(() => {
+
+                    if (isPaymentGatewayActive()) {
+
+                        resolve({ paymentStatus: true, amount: 5000 });
+
+                        // promise can be resolved only once
+                        resolve({ paymentStatus: true, amount: 5000 });
+
+                    } else {
+
+                        reject("Payment failed, payment Gateway is not active")
+                    }
+
+
+                }, 2000);
+
+            })
+        };
+
+
         function dbCallToAddOrder(cart) {
 
             // call to DB and return orderId
@@ -87,29 +115,12 @@
         }
 
         function isCartValid(cart) {
-            return false;
+            return true;
         }
 
         function isPaymentGatewayActive() {
-            return false;
+            return true;
         }
-
-
-        function proceedToPayment(orderId) {
-
-            return new Promise(function (resolve, reject) {
-
-                console.log(`proceeding to payment for order id ${orderId}`)
-                setTimeout(() => {
-
-                    return isPaymentGatewayActive() ?
-                        resolve({ paymentStatus: true, amount: 5000 })
-                        : reject("Payment failed, payment Gateway is not active")
-
-                }, 2000);
-
-            })
-        };
 
     </script>
 
