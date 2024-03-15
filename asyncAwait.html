@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        const p1 = new Promise(function (resolve, reject) {
+
+            setTimeout(() => {
+
+                resolve("p1 is resolved");
+
+            }, 5000);
+        });
+
+        const p2 = new Promise(function (resolve, reject) {
+
+            setTimeout(() => {
+                resolve("p2 is resolved");
+            }, 10000);
+
+        })
+
+
+
+        BindCountries();
+
+        async function BindCountries() {
+
+            console.log('start');
+
+            const p1Response = await p1;
+            console.log(p1Response);
+
+
+            const p2Response = await p2;
+            console.log(p2Response);
+
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        const nums = [1, 2, 3, 4];
+        const [a, , b, ...rest] = nums;
+        console.log(`a = ${a} b = ${b} rest = ${rest}`);
+        console.log(sum(nums));
+        const [, , , , , , invalid] = nums;
+        console.log(invalid);
+
+
+        const vehicle = {
+            brand: 'Ford',
+            model: 'Mustang',
+            type: 'car',
+            year: 2021,
+            color: 'red'
+        }
+
+        const { brand: brandName, type: vehicleType } = vehicle;
+        console.log(`brandName ${brandName}, vehicleType ${vehicleType}`);
+        test(vehicle);
+        test2(vehicle)
+
+        function test({ brand, model, type }) {
+            console.log(`brand ${brand}, model ${model}, type ${type}`);
+        }
+
+        function test2({ brand: brandName, invalidKey: invalidValue }) {
+            console.log(brandName);
+            console.log(invalidValue);
+        }
+
+        function sum([first, second, , fourth]) {
+
+            return first + second + fourth;
+        }
+    </script>
+
+</body>
+
+</html>
